@@ -20,4 +20,12 @@ class StudentDecorator < BaseDecorator
       number_with_precision(avg, precision: 2)
     end
   end
+
+  def formatted_date
+    if !self.birthdate.nil?
+      self.birthdate.strftime("%Y-%m_%d")
+    else
+      return "-"
+    end
+  end
 end
