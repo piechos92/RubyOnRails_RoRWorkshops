@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/piechos92/ror-workshops.svg?branch=master)](https://travis-ci.org/piechos92/ror-workshops)
 RoR Workshops
 ================
 
