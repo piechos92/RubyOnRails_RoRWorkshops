@@ -3,6 +3,8 @@ class StudentsController < ApplicationController
   expose(:student_subject_items) { student.subject_items }
   expose(:students)
 
+  before_action :add_subject_items, only: [:create, :update]
+
   def create
     if student.save
       redirect_to student_path(student), notice: I18n.t('shared.created', resource: 'Student')
@@ -28,5 +30,9 @@ class StudentsController < ApplicationController
   private
     def student_params
       params.require(:student).permit(:first_name, :last_name)
+    end
+
+    def add_subject_items
+      student.subject_items = SubjectItem.where(id: params[:student][:subject_item_ids])
     end
 end
