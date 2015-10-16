@@ -4,4 +4,10 @@ Rails.application.routes.draw do
   resources :students do
     get :subjects
   end
+
+  resources :teachers
+
+  resources :visitors, only: [:index]
+
+  get 'report/subjects' => 'reports#subjects'
 end
