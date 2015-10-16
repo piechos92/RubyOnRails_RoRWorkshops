@@ -1,7 +1,7 @@
 class TeachersController < ApplicationController
   expose(:teachers)
   expose(:teacher, attributes: :teacher_params)
-  expose(:teacher_subject_items) { teacher.subject_items }
+  expose(:teacher_subject_items) {SubjectItem.where("teacher_id = :teacher or teacher_id is NULL", { teacher: teacher }) }
 
   def create
     if teacher.save

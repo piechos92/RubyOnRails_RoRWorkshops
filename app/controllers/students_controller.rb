@@ -3,6 +3,7 @@ class StudentsController < ApplicationController
   expose(:student_subject_items) { student.subject_items }
   expose(:students)
 
+  before_action :authenticate_user!
   before_action :add_subject_items, only: [:create, :update]
 
   def create
