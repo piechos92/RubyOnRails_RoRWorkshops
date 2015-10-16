@@ -3,6 +3,8 @@ class TeachersController < ApplicationController
   expose(:teacher, attributes: :teacher_params)
   expose(:teacher_subject_items) {SubjectItem.where("teacher_id = :teacher or teacher_id is NULL", { teacher: teacher }) }
 
+  before_action :authenticate_user!
+
   def create
     if teacher.save
       redirect_to teacher_path(teacher), notice: I18n.t('shared.created', resource: 'Teacher')
