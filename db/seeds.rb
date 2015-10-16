@@ -21,7 +21,8 @@ end
 25.times do
   Student.create!(
     first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
+    last_name: Faker::Name.last_name,
+    birthdate: rand(365).days.ago(Date.today) - (rand(5)+20).years #Students are at least 20 years old
   )
 end
 
