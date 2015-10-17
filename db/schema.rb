@@ -105,10 +105,21 @@ ActiveRecord::Schema.define(version: 20150914171954) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "payments", force: :cascade do |t|
+    t.integer  "student_id"
+    t.float    "amount"
+    t.date     "date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "payments", ["student_id"], name: "index_payments_on_student_id", using: :btree
+
   add_foreign_key "participations", "students"
   add_foreign_key "subject_item_notes", "students"
   add_foreign_key "participations", "subject_items"
   add_foreign_key "subject_item_notes", "subject_items"
   add_foreign_key "subject_items", "teachers"
   add_foreign_key "user_categories", "categories"
+  add_foreign_key "payments", "students"
 end
