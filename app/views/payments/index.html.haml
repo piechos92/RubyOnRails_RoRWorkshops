@@ -1,0 +1,15 @@
+- breadcrumb :payments
+.payments
+  .payment-item
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th.full-name= t('subjects.columns.full_name')
+          %th.amount= t('students.columns.amount')
+          %th.date= t('subjects.columns.date')
+      %tbody
+        - payments.each do |payment|
+          %tr
+            %td= payment.student.decorate.full_name
+            %td= payment.decorate.formatted_amount + t('shared.currency')
+            %td= payment.date

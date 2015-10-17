@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'payments/index'
+
   devise_for :users
 
   root 'visitors#index'
@@ -11,9 +13,9 @@ Rails.application.routes.draw do
     get :subjects
   end
 
-  resources :teachers
-
   resources :visitors, only: [:index]
+
+  resources :payments, only: [:index]
 
   get 'report/subjects' => 'reports#subjects'
 end
